@@ -5,6 +5,7 @@
 
 // smooth zooming https://stackoverflow.com/questions/56289506/phaser-3-how-to-create-smooth-zooming-effect
 // Flipping animation: https://phaser.discourse.group/t/flipx-for-spritesheet-animation/12935
+// Announcer Voice: Microsoft Zira
 
 'use strict'
 
@@ -20,7 +21,7 @@ let config = {
     },
     width: 800,
     height: 600,
-    scene: [Load, Oven]
+    scene: [Load, Tutorial, Transition01a]
 }
 
 const game = new Phaser.Game(config);

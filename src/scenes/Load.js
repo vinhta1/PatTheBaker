@@ -12,8 +12,15 @@ class Load extends Phaser.Scene{
         //load music
         this.load.path = "./assets/music/";
         this.load.audio("bgm_oven", "bgm01.wav");
+        this.load.audio("bgm_beatRound01", "beatRound01.wav");
+        this.load.audio("bgm_introRound02", "introRound02.wav");
+
+        //load sfx
         this.load.path = "./assets/sfx/";
-        this.load.audio("sfx_oven", "oven.wav")
+        this.load.audio("sfx_oven", "oven.wav");
+        this.load.audio("sfx_points", "getPoints.wav");
+        this.load.audio("sfx_r1Success","round1Success.wav");
+        this.load.audio("sfx_r2Intro","round2Intro.wav");
     }
 
     create() {
@@ -46,7 +53,7 @@ class Load extends Phaser.Scene{
         })
 
         //After everything's done, move to the next scene (currently oven)
-        this.scene.start("OvenScene");
+        this.scene.start("TutorialScene");
     }
 
 }
