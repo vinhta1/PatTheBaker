@@ -27,10 +27,19 @@ class Oven extends Phaser.Scene{
         //this.cameras.main.setBackgroundColor(0x11dc00);
         this.player = new Pat(this, game.config.width*3/4, game.config.height, "fullAtlas", "Pat_00"); //add Pat
         this.player.setY(this.player.y - this.player.height*1.5);
+
         this.oven = this.physics.add.sprite(game.config.width*1/8, game.config.height,"fullAtlas", "Oven_00").setScale(2); //add oven
         this.oven.setY(this.player.y);
         this.oven.setX(this.oven.x + this.oven.width);
         this.oven.setImmovable(true);
+        this.oven.on("animationcomplete", () => {
+            this.QTECam.setVisible(false);
+            this.cameras.main.setVisible(true);
+            this.time.removeAllEvents();
+            this.ovenSFX.stop();
+            this.bgm.setVolume(0.4);
+            this.bgm.setRate(1);
+        })
 
         this.cameras.main.ignore(this.blackRectangle);
 
