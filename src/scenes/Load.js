@@ -7,6 +7,8 @@ class Load extends Phaser.Scene{
         //load images
         this.load.path = "./assets/images/";
         this.load.image("kitchenBG","Kitchen.png");
+        this.load.image("Round1WinBG","Round01WinBG.png");
+        this.load.image("Round2IntroBG","Round02IntroBG.png");
         this.load.atlas("fullAtlas", "TextureAtlas.png","TextureJSON.json");
 
         //load music
@@ -50,6 +52,24 @@ class Load extends Phaser.Scene{
                 frames: ["Oven_00","Oven_01","Oven_02","Oven_02","Oven_03"]
             }),
             frameRate: 4
+        })
+
+        this.anims.create({
+            key: "A-highlight",
+            frames: this.anims.generateFrameNames("fullAtlas",{
+                frames: ["WASD_00","WASD_00","WASD_00","WASD_11","WASD_11","WASD_12","WASD_12"]
+            }),
+            frameRate: 4,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: "leftClick-highlight",
+            frames: this.anims.generateFrameNames("fullAtlas",{
+                frames: ["Mouse_00","Mouse_00","Mouse_00","LC_01","LC_01","LC_02","LC_02"]
+            }),
+            frameRate: 4,
+            repeat: -1
         })
 
         //After everything's done, move to the next scene (currently oven)
