@@ -103,7 +103,7 @@ class Tutorial extends Phaser.Scene{
             this.QTEsuccess = false;
             this.tutorialMouse.setVisible(true);
             this.tutorialMouse.anims.play("leftClick-highlight");
-            console.log(this.QTEsuccess);
+            //console.log(this.QTEsuccess); //console.log debug
 
             this.bar1.setVisible(true);
             this.bar1Fill.setVisible(true);
@@ -119,11 +119,11 @@ class Tutorial extends Phaser.Scene{
 
             this.time.delayedCall(3000, () => {
                 this.QTEsuccess = true;
-                console.log(this.QTEsuccess);
+                //console.log(this.QTEsuccess); //console.log debug
             });
             this.time.delayedCall(7500, () => {
                 this.QTEsuccess = false;
-                console.log(this.QTEsuccess);
+                //console.log(this.QTEsuccess); console.log debug
             });
             this.ovenSFX.play();
             this.bgm.setRate(.8).setVolume(0.1);
@@ -189,13 +189,13 @@ class Tutorial extends Phaser.Scene{
             this.gingerbread.setVisible(true);
             this.pointsSFX.play();
             this.pointsSFX.on("complete", () => {
-                //console.log("success");
+                //console.log("success"); //debug
                 this.scene.stop("TutorialScene");
                 this.scene.start("Transition01aScene");
             });
         } else {
             this.cameras.main.flash(250,255,100,100);
-            //console.log("failure");
+            //console.log("failure"); //debug
         }
     }
     

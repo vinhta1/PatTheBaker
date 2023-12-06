@@ -17,7 +17,7 @@ let config = {
     physics: {
         default: "arcade",
         arcade: {
-            debug: true //true
+            debug: false //true
         }
     },
     width: 800,
