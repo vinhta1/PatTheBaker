@@ -8,6 +8,7 @@
 // Flipping animation: https://phaser.discourse.group/t/flipx-for-spritesheet-animation/12935
 // Announcer Voice: Microsoft Zira
 // Progress Bar: https://phaser.io/examples/v3/view/game-objects/nine-slice/progress-bar
+// Loading Bar: https://gamedevacademy.org/creating-a-preloading-screen-in-phaser-3/
 
 'use strict'
 
