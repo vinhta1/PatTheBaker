@@ -2,6 +2,7 @@
 // Pat the Baker, from Billy and Mandy: Brown Evil
 // Started: 12/04/23
 // Playtest Version: 12/06/23
+// Done, 8-16 hours in 2 days?
 
 // smooth zooming https://stackoverflow.com/questions/56289506/phaser-3-how-to-create-smooth-zooming-effect
 // Flipping animation: https://phaser.discourse.group/t/flipx-for-spritesheet-animation/12935

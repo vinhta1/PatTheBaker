@@ -185,7 +185,7 @@ class Tutorial extends Phaser.Scene{
         if (success){
             this.cameras.main.flash(250,100,255,100);
             this.gingerbread.setPosition(Phaser.Math.Between(this.gingerbread.width * 2, game.config.width - this.gingerbread.width * 2),
-            Phaser.Math.Between(this.gingerbread.height * 2, game.config.height/2 - this.gingerbread.width * 2));
+            Phaser.Math.Between(this.gingerbread.height * 2, game.config.height/2 - this.gingerbread.height));
             this.gingerbread.setVisible(true);
             this.pointsSFX.play();
             this.pointsSFX.on("complete", () => {
