@@ -4,7 +4,7 @@ class Pat extends Phaser.GameObjects.Sprite{
     constructor(scene, x, y, texture, frame, speed = 200, freeze = false) {
         super(scene, x, y, texture, frame);
         
-        this.parentScene = scene;                           // maintain scene context
+        this.parentScene = scene;                           //maintain scene context
         
         this.parentScene.add.existing(this);                //draw Pat
         this.parentScene.physics.add.existing(this);        //add a physics body to Pat
