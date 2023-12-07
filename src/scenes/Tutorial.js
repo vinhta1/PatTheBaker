@@ -55,7 +55,6 @@ class Tutorial extends Phaser.Scene{
         //this.cameras.main.setBackgroundColor(0x11dc00);   //sets camera background to green
         //this.cameras.main.setZoom(0.8);                   //zoom out for debug
 
-
         //add Pat, move them off screen, then set world bounds so they can't stray too far to the right.
         this.player = new Pat(this, game.config.width, game.config.height, "fullAtlas", "Pat_00");
         this.player.setPosition(this.player.x + this.player.width * 6/10,this.player.y - this.player.height*1.5);
@@ -77,18 +76,6 @@ class Tutorial extends Phaser.Scene{
         this.oven.setX(this.oven.x + this.oven.width);
         this.oven.setImmovable(true);
 
-        //QTE Exit: Oven
-        this.oven.on("animationcomplete", () => {
-            this.time.delayedCall(250, () => {          //small delay
-                this.QTECam.setVisible(false);          //go out of QTE cam
-                this.cameras.main.setVisible(true);     //go back to regular cam
-                this.ovenSFX.stop();                    //stop the QTE sfx
-                this.bgm.setVolume(0.4);                //set bgm back to normal
-                this.bgm.setRate(1);
-                this.QTEcheck(this.QTEsuccess);
-            })
-        })
-
 
         //camera work
         this.QTECam = this.cameras.add(0, 0, game.config.width, game.config.height).setVisible(false);  //create a QTE camera
@@ -101,48 +88,11 @@ class Tutorial extends Phaser.Scene{
         //this.QTECam.startFollow(this.player, false, .2, .2, );
 
         //QTE Enter: Oven
-        this.physics.add.collider(this.player, this.oven, () => {
-            this.QTEsuccess = false;
-            this.tutorialMouse.setVisible(true);
-            this.tutorialMouse.anims.play("leftClick-highlight");
-            //console.log(this.QTEsuccess); //console.log debug
+        this.EnterOvenQTE();
 
-            this.bar1.setVisible(true);
-            this.bar1Fill.setVisible(true);
-            this.bar1Target.setVisible(true);
-
-            this.tweens.add({
-                targets: this.bar1Fill,
-                width: this.bar1.width * 2 - 12,
-                duration: 10000,
-                ease: 'Linear',
-                repeat: 0,
-            });
-
-            this.time.delayedCall(3000, () => {
-                this.QTEsuccess = true;
-                //console.log(this.QTEsuccess); //console.log debug
-            });
-            this.time.delayedCall(7500, () => {
-                this.QTEsuccess = false;
-                //console.log(this.QTEsuccess); console.log debug
-            });
-            this.ovenSFX.play();
-            this.bgm.setRate(.8).setVolume(0.1);
-            this.time.delayedCall(5000, () => {
-                this.bgm.setVolume(0.2);
-                this.time.delayedCall(2500, () => {
-                    this.bgm.setVolume(0.3);
-                })
-            })
-            this.cameras.main.setVisible(false);
-            this.QTE = true; //QTE flag
-            this.player.QTE(); //player's QTE flag
-            this.QTECam.setVisible(true);
-            this.QTECam.zoomTo(2, 10000, "Circ");
-            this.QTECam.pan(this.player.x - (this.player.x - this.oven.x)/2,this.player.y-this.player.y/8,10000,"Circ")
-            
-        });
+        //QTE Exit: Oven
+        this.ExitOvenQTE();
+        
 
         this.input.on("pointerdown", () => {    //left click interact for tutorial.
             if (this.QTE) {
@@ -203,5 +153,61 @@ class Tutorial extends Phaser.Scene{
             //console.log("failure"); //debug
         }
     }
+
+    EnterOvenQTE(){
+        this.physics.add.collider(this.player, this.oven, () => {
+        this.QTEsuccess = false;
+        this.tutorialMouse.setVisible(true);
+        this.tutorialMouse.anims.play("leftClick-highlight");
+        //console.log(this.QTEsuccess); //console.log debug
+
+        this.bar1.setVisible(true);
+        this.bar1Fill.setVisible(true);
+        this.bar1Target.setVisible(true);
+
+        this.tweens.add({                               //QTE bar tween
+            targets: this.bar1Fill,
+            width: this.bar1.width * 2 - 12,
+            duration: 10000,
+            ease: 'Linear',
+            repeat: 0,
+        });
+
+        this.time.delayedCall(3000, () => {
+            this.QTEsuccess = true;
+            //console.log(this.QTEsuccess); //console.log debug
+        });
+        this.time.delayedCall(7500, () => {
+            this.QTEsuccess = false;
+            //console.log(this.QTEsuccess); console.log debug
+        });
+        this.ovenSFX.play();
+        this.bgm.setRate(.8).setVolume(0.1);
+        this.time.delayedCall(5000, () => {
+            this.bgm.setVolume(0.2);
+            this.time.delayedCall(2500, () => {
+                this.bgm.setVolume(0.3);
+            })
+        })
+        this.cameras.main.setVisible(false);
+        this.QTE = true;                                //QTE flag
+        this.player.QTE();                              //player's QTE flag
+        this.QTECam.setVisible(true);
+        this.QTECam.zoomTo(2, 10000, "Circ");
+        this.QTECam.pan(this.player.x - (this.player.x - this.oven.x)/2,this.player.y-this.player.y/8,10000,"Circ")
+        });
+    }
     
+    ExitOvenQTE(){
+        this.oven.on("animationcomplete", () => {
+            this.time.delayedCall(250, () => {          //small delay
+                this.QTECam.setVisible(false);          //go out of QTE cam
+                this.cameras.main.setVisible(true);     //go back to regular cam
+                this.ovenSFX.stop();                    //stop the QTE sfx
+                this.bgm.setVolume(0.4);                //set bgm back to normal
+                this.bgm.setRate(1);
+                this.QTEcheck(this.QTEsuccess);
+            })
+        });
+    }
 }
