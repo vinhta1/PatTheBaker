@@ -36,15 +36,15 @@ class Transition01a extends Phaser.Scene{
         })
 
         //sound playing
-        this.round01WinA.play();
-        this.round01WinB.play();
-        this.round01WinA.on("complete", () => {
-            this.time.delayedCall(1000, () => {
-                this.round2IntroBG.setVisible(true);
-                this.round02IntroA.play();
-                this.round02IntroB.play()
+        this.round01WinA.play();                        //play win jingle
+        this.round01WinB.play();                        //round 1 win announcer
+        this.round01WinA.on("complete", () => {         //when the jingle is done
+            this.time.delayedCall(1000, () => {         
+                this.round2IntroBG.setVisible(true);    //show the round 2 intro background
+                this.round02IntroA.play();              //play the transition jingle
+                this.round02IntroB.play();               //play the round 2 intro announcer
                 this.round02IntroA.on("complete", () => {
-
+                    this.scene.switch("EggGameScene");
                 });
             });
         });

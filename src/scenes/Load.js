@@ -19,8 +19,11 @@ class Load extends Phaser.Scene{
         //load images
         this.load.path = "./assets/images/";
         this.load.image("kitchenBG","Kitchen.png");
+        this.load.image("Round2Placeholder","Round2Placeholder.png");
         this.load.image("Round1WinBG","Round01WinBG.png");
         this.load.image("Round2IntroBG","Round02IntroBG.png");
+        this.load.image("FailBG", "FailBG.png");
+        this.load.image("TitleBG","TitleBG.png");
         this.load.atlas("fullAtlas", "TextureAtlas.png","TextureJSON.json");
 
         //load music
@@ -85,7 +88,7 @@ class Load extends Phaser.Scene{
         })
 
         //After everything's done, move to the next scene (currently oven)
-        this.scene.start("TutorialScene");
+        this.scene.start("TitleScene");
     }
 
 }

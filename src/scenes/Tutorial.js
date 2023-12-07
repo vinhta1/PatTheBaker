@@ -1,3 +1,5 @@
+//playtest notes: add a fail state menu
+
 class Tutorial extends Phaser.Scene{
     constructor() {
         super("TutorialScene");
@@ -161,6 +163,7 @@ class Tutorial extends Phaser.Scene{
             this.tutorialWASD.setVisible(true);
             this.tutorialWASD.anims.play("A-highlight");
         });
+
     }
 
     update(){
@@ -195,6 +198,8 @@ class Tutorial extends Phaser.Scene{
             });
         } else {
             this.cameras.main.flash(250,255,100,100);
+            this.scene.stop("TutorialScene");
+            this.scene.start("FailScene");
             //console.log("failure"); //debug
         }
     }
