@@ -44,7 +44,7 @@ class Title extends Phaser.Scene{
         scene.pauseFlag = false;                        //false = not currently paused
         scene.events.on('resume', () =>
                     {
-                        console.log('Scene A resumed'); //debug
+                        //console.log('Scene A resumed'); //debug
                         scene.pauseFlag = false;        //can pause again after returning
                     });
         scene.ESCkey.on("down", () => {

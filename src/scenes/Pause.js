@@ -8,14 +8,33 @@ class Pause extends Phaser.Scene{
     }
 
     create(){
+        this.returnSceneScene = this.scene.manager.getScene("this.returnScene");
         this.blackRectangle = this.add.rectangle(game.config.width/2,game.config.height/2,
         game.config.width/2,game.config.height/2,0x000000,.8).setScale(1);                  //add pause background
 
+        this.Button01 = new Button(this,game.config.width/2, game.config.height/2, "fullAtlas", "Sausage_00");
+        this.Button01.on("pointerup", (pointer) => {
+                this.returnSceneScene.time.removeAllEvents();   //stop any delayedCalls in progress
+                this.returnSceneScene.scene.stop();
+                this.returnSceneScene.sound.stopAll();          //stop any sound playing
+                this.scene.start("TitleScene");
+        });
+
+        this.buttonText(this.Button01, "Title");
+
+        //unpause
         this.ESCkey = this.input.keyboard.addKey("ESC");
         this.ESCkey.on("down", () => {
             // console.log("test")
             this.scene.resume(this.returnScene);                                            //go back to original scene.
             this.scene.sleep(this);                                                         //instead of deleted, sleep.
         });
+    }
+
+    //allows buttons to get text
+    buttonText(button, text, scale = 2){
+        this.add.text(button.x, button.y, text, {
+            fontFamily:"Ghibo Talk"
+        }).setScale(scale).setOrigin(0.5).setResolution(scale).setTint(0x000000);
     }
 }

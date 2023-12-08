@@ -4,6 +4,7 @@ class Fail extends Phaser.Scene{
     }
 
     create(){
+        this.sound.stopAll();
         let title = this.scene.get("TitleScene") //get emergency escape
         title.emergencyEscape(this);
 
