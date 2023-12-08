@@ -9,6 +9,9 @@
 // Technical Execution: physics systems (velocity and movement), cameras (multiple cameras for UI and events),
 // animation manager (Pat, objects), tween manager (zoom in effects, certain UI elements), timers (timers for... timing / QTEs, scene transitions)
 
+// Ghibo talk font by Docallisme https://www.dafont.com/ghibo-talk.font
+
+// custom font https://webtips.dev/webtips/phaser/custom-fonts-in-phaser3 https://github.com/vercel/next.js/discussions/16850
 // smooth zooming https://stackoverflow.com/questions/56289506/phaser-3-how-to-create-smooth-zooming-effect
 // Flipping animation: https://phaser.discourse.group/t/flipx-for-spritesheet-animation/12935
 // Announcer Voice: Microsoft Zira

@@ -38,6 +38,9 @@ class Load extends Phaser.Scene{
         this.load.audio("sfx_points", "getPoints.wav");
         this.load.audio("sfx_r1Success","round1Success.wav");
         this.load.audio("sfx_r2Intro","round2Intro.wav");
+
+        this.load.path = "";
+        this.load.css("Style","./src/Style.css");
     }
 
     create() {
