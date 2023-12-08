@@ -9,6 +9,8 @@ class Tutorial extends Phaser.Scene{
         this.sound.stopAll();   //Stop all running sounds
         this.QTE = false;       //QTE flag
 
+        let title = this.scene.get("TitleScene") //get emergency escape
+        title.emergencyEscape(this);
 
         //add music and sounds
         this.bgm = this.sound.add("bgm_oven", {

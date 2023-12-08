@@ -24,6 +24,7 @@ class Load extends Phaser.Scene{
         this.load.image("Round2IntroBG","Round02IntroBG.png");
         this.load.image("FailBG", "FailBG.png");
         this.load.image("TitleBG","TitleBG.png");
+        this.load.image("CreditsBG","CreditsBG.png")
         this.load.atlas("fullAtlas", "TextureAtlas.png","TextureJSON.json");
 
         //load music

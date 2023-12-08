@@ -8,6 +8,9 @@ class Transition01a extends Phaser.Scene{
     }
 
     create(){
+        let title = this.scene.get("TitleScene") //get emergency escape
+        title.emergencyEscape(this);
+
         //transition screen initialization
         this.round1WinBG = this.add.sprite(0,0,"Round1WinBG").setOrigin(0);
         this.round2IntroBG  = this.add.sprite(0,0,"Round2IntroBG").setOrigin(0).setVisible(false);
