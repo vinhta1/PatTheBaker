@@ -8,9 +8,11 @@ class Pause extends Phaser.Scene{
     }
 
     create(){
-        this.returnSceneScene = this.scene.manager.getScene("this.returnScene");
-        this.blackRectangle = this.add.rectangle(game.config.width/2,game.config.height/2,
-        game.config.width/2,game.config.height/2,0x000000,.8).setScale(1);                  //add pause background
+        this.returnSceneScene = this.scene.manager.getScene(this.returnScene);                  //get original scene
+        
+        this.blackRectangle = this.add.rectangle(game.config.width/2,game.config.height/2,      //add pause background
+        game.config.width/2,game.config.height/2,0x000000,.8).setScale(1);
+        this.returnSceneScene.sound.pauseAll();
 
         this.Button01 = new Button(this,game.config.width/2, game.config.height/2, "fullAtlas", "Sausage_00");
         this.Button01.on("pointerup", (pointer) => {
@@ -26,6 +28,7 @@ class Pause extends Phaser.Scene{
         this.ESCkey = this.input.keyboard.addKey("ESC");
         this.ESCkey.on("down", () => {
             // console.log("test")
+            this.returnSceneScene.sound.resumeAll();
             this.scene.resume(this.returnScene);                                            //go back to original scene.
             this.scene.sleep(this);                                                         //instead of deleted, sleep.
         });
