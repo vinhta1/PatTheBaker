@@ -38,7 +38,7 @@ class Credits extends Phaser.Scene{
             align: "center"
         }).setOrigin(0.5).setScale(1.5).setResolution(2).setTint(0xFACADE);
 
-        this.add.text(this.voiceHeader.x, this.voiceHeader.y + this.voiceHeader.height,"Microsoft Zira", {
+        this.add.text(this.voiceHeader.x, this.voiceHeader.y + 5 + this.voiceHeader.height,"Microsoft Zira by Microsoft", {
             fontFamily:"Ghibo Talk",
             wordWrap: {width: this.voiceHeader.width/4},
             align: "center"

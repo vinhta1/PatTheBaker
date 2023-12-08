@@ -38,13 +38,30 @@ class Title extends Phaser.Scene{
         }).setScale(scale).setOrigin(0.5).setResolution(scale).setTint(0x000000);
     }
 
-    emergencyEscape(scene){ //emergency esc key
+    //emergency esc key
+    emergencyEscape(scene, menu = false, sceneReturn){
         scene.ESCkey = scene.input.keyboard.addKey("ESC");
+        scene.pauseFlag = false;                        //false = not currently paused
+        scene.events.on('resume', () =>
+                    {
+                        console.log('Scene A resumed'); //debug
+                        scene.pauseFlag = false;        //can pause again after returning
+                    });
         scene.ESCkey.on("down", () => {
-            scene.time.removeAllEvents();   //stop any delayedCalls in progress
-            scene.scene.stop();
-            scene.sound.stopAll();          //stop any sound playing
-            scene.scene.start("TitleScene");
+            if (!menu){
+                scene.time.removeAllEvents();   //stop any delayedCalls in progress
+                scene.scene.stop();
+                scene.sound.stopAll();          //stop any sound playing
+                scene.scene.start("TitleScene");
+            } else {
+                if (!scene.pauseFlag){          //if not currently paused, launch the pause scene on top
+                    scene.pauseFlag = true;
+                    scene.scene.pause(sceneReturn);
+                    scene.scene.launch("PauseScene",{
+                        return: sceneReturn
+                    });
+                }
+            }
         })
     }
 }

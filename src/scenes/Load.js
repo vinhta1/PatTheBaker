@@ -10,7 +10,7 @@ class Load extends Phaser.Scene{
         progressBox.fillRect(240, 270, 320, 50);
 
         this.load.on('progress', function (value) {
-            console.log(value);
+            //console.log(value); //console.logs the progress of the loading bar
             progressBar.clear();
             progressBar.fillStyle(0xffffff, 1);
             progressBar.fillRect(250, 280, 300 * value, 30);
