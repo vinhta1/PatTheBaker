@@ -14,17 +14,19 @@ class Title extends Phaser.Scene{
 
         //Make buttons + destinations
         this.Button01 = new Button(this,game.config.width/2, game.config.height/2, "fullAtlas", "Sausage_00");
+        this.Button01.setX(game.config.width - this.Button01.width*3/4);
         this.Button01.on("pointerup", (pointer) => {
             this.scene.switch("TutorialScene");
         });
 
         this.Button02 = new Button(this, game.config.width/2, game.config.height*3/4, "fullAtlas", "Sausage_00");
+        this.Button02.setPosition(game.config.width - this.Button02.width*3/4, this.Button01.y + this.Button02.height*5/4);
         this.Button02.on("pointerup", (pointer) => {
             this.scene.switch("CreditScene");
         });
 
         //Give buttons text
-        this.buttonText(this.Button01, "Tutorial");
+        this.buttonText(this.Button01, "Play");
         this.buttonText(this.Button02, "Credits");
     }
 

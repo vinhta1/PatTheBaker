@@ -15,14 +15,26 @@ class Pause extends Phaser.Scene{
         this.returnSceneScene.sound.pauseAll();
 
         this.Button01 = new Button(this,game.config.width/2, game.config.height/2, "fullAtlas", "Sausage_00");
+        this.Button01.setY(this.Button01.y+this.Button01.height)
         this.Button01.on("pointerup", (pointer) => {
-                this.returnSceneScene.time.removeAllEvents();   //stop any delayedCalls in progress
-                this.returnSceneScene.scene.stop();
-                this.returnSceneScene.sound.stopAll();          //stop any sound playing
-                this.scene.start("TitleScene");
+            this.returnSceneScene.time.removeAllEvents();   //stop any delayedCalls in progress
+            this.returnSceneScene.scene.stop();
+            this.returnSceneScene.sound.stopAll();          //stop any sound playing
+            this.scene.start("TitleScene");
         });
 
         this.buttonText(this.Button01, "Title");
+
+        this.Button02 = new Button(this,game.config.width/2, game.config.height/2, "fullAtlas", "Sausage_00");
+        this.Button02.setY(this.Button02.y-this.Button02.height)
+        this.Button02.on("pointerup", (pointer) => {
+            this.returnSceneScene.sound.resumeAll();
+            this.scene.resume(this.returnScene);            //just like pressing the escape key
+            this.scene.sleep(this);
+        });
+        
+
+        this.buttonText(this.Button02, "Resume");
 
         //unpause
         this.ESCkey = this.input.keyboard.addKey("ESC");

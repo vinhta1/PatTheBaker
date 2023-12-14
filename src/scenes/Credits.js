@@ -27,33 +27,39 @@ class Credits extends Phaser.Scene{
         //make header text
         this.buttonText(this.fontHeader, "Font");
         this.buttonText(this.voiceHeader, "Voice");
-        this.buttonText(this.meHeader01, "Made",);
-        this.buttonText(this.meHeader02, "By",);
+        this.buttonText(this.meHeader01, "Made with",).setAngle(-7);
+        this.buttonText(this.meHeader02, "Made by",).setAngle(10);
         this.buttonText(this.exitButton, "Back",);
 
         //make regular text
-        this.add.text(this.fontHeader.x + 10, this.fontHeader.y + this.fontHeader.height,"Ghibo Talk by Docallisme", {
+        this.add.text(this.fontHeader.x + 10, this.fontHeader.y + this.fontHeader.height,"Ghibo Talk by Docallisme", { //font credit
             fontFamily:"Ghibo Talk",
             wordWrap: {width: this.fontHeader.width/2},
             align: "center"
         }).setOrigin(0.5).setScale(1.5).setResolution(2).setTint(0xFACADE);
 
-        this.add.text(this.voiceHeader.x, this.voiceHeader.y + 5 + this.voiceHeader.height,"Microsoft Zira by Microsoft", {
+        this.add.text(this.voiceHeader.x, this.voiceHeader.y + 5 + this.voiceHeader.height,"Microsoft Zira by Microsoft", { //voice credit
             fontFamily:"Ghibo Talk",
             wordWrap: {width: this.voiceHeader.width/4},
             align: "center"
         }).setOrigin(0.5).setScale(1.5).setResolution(2).setTint(0xFACADE);
 
-        this.add.text(game.config.width/2, game.config.height*5/8,"Vinh Ta", {
+        this.add.text(this.meHeader01.x, this.meHeader01.y + this.meHeader01.height - 5, "Phaser 3", { //framework credit
             fontFamily:"Ghibo Talk",
             align: "center"
-        }).setOrigin(0.5).setScale(3).setResolution(3).setTint(0x000000);
+        }).setOrigin(0.5).setScale(3).setResolution(3).setTint(0x000000).setAngle(7);
+
+        this.add.text(this.meHeader02.x, this.meHeader02.y + this.meHeader02.height, "Vinh Ta", { //me credit
+            fontFamily:"Ghibo Talk",
+            align: "center"
+        }).setOrigin(0.5).setScale(3).setResolution(3).setTint(0x000000).setAngle(-5);
     }
 
     //allows buttons to get text
     buttonText(button, text, scale = 2){
-        this.add.text(button.x, button.y, text, {
+        let newText =this.add.text(button.x, button.y, text, {
             fontFamily:"Ghibo Talk"
         }).setScale(scale).setOrigin(0.5).setResolution(scale).setTint(0x000000);
+        return newText;
     }
 }

@@ -24,7 +24,7 @@ class Load extends Phaser.Scene{
         this.load.image("Round2IntroBG","Round02IntroBG.png");
         this.load.image("FailBG", "FailBG.png");
         this.load.image("TitleBG","TitleBG.png");
-        this.load.image("CreditsBG","CreditsBG.png")
+        this.load.image("CreditsBG","CreditsBG.png");
         this.load.atlas("fullAtlas", "TextureAtlas.png","TextureJSON.json");
 
         //load music
@@ -39,6 +39,9 @@ class Load extends Phaser.Scene{
         this.load.audio("sfx_points", "getPoints.wav");
         this.load.audio("sfx_r1Success","round1Success.wav");
         this.load.audio("sfx_r2Intro","round2Intro.wav");
+        this.load.audio("sfx_failFire","fireLoop.wav");
+        this.load.audio("sfx_failAlarm","alarmLoop.wav");
+        this.load.audio("sfx_r1Fail","round1Fail.wav");
 
         this.load.path = "";
         this.load.css("Style","./src/Style.css");
