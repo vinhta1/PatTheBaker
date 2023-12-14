@@ -34,7 +34,7 @@ let config = {
     },
     width: 800,
     height: 600,
-    scene: [Load, Title, Credits, Tutorial, Transition01a, Egg, Fail]
+    scene: [Load, Title, Credits, Tutorial, Transition01a, Egg, Fail, Pause]
 }
 
 const game = new Phaser.Game(config);

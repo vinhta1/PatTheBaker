@@ -10,7 +10,7 @@ class Tutorial extends Phaser.Scene{
         this.QTE = false;       //QTE flag
 
         let title = this.scene.get("TitleScene") //get emergency escape
-        title.emergencyEscape(this);
+        title.emergencyEscape(this, true, "TutorialScene");
 
         //add music and sounds
         this.bgm = this.sound.add("bgm_oven", {
