@@ -13,6 +13,10 @@ class Egg extends Phaser.Scene{
             this.scene.switch("TutorialScene");
             this.Rkey.off("down");
         })
+
+        this.time.delayedCall(2500, ()=> {
+            this.scene.switch("CreditScene");
+        })
     }
 
     update(){
